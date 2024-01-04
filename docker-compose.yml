@@ -28,7 +28,18 @@ services:
     image: adminer:latest
     restart: always
     ports:
+      - 8081:8080
+    depends_on:
+      - db
+  api:
+    image: janmaki/simpletimer:latest
+    ports:
       - 8080:8080
+    environment:
+      - SIMPLETIMER_DB_ADDRESS=db:5432
+      - SIMPLETIMER_DB_SCHEME=${DB_SCHEME}
+      - SIMPLETIMER_DB_USER=${DB_USER}
+      - SIMPLETIMER_DB_PASS=${DB_PASS}
     depends_on:
       - db
 volumes:
