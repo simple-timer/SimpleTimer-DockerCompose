@@ -36,6 +36,7 @@ services:
     ports:
       - 8080:8080
     environment:
+      - JTW_SECRET=${JTW_SECRET}
       - SIMPLETIMER_DB_ADDRESS=db:5432
       - SIMPLETIMER_DB_SCHEME=${DB_SCHEME}
       - SIMPLETIMER_DB_USER=${DB_USER}
